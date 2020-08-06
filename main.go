@@ -22,7 +22,7 @@ func main() {
 }
 
 func task() {
-	db, err := gorm.Open("mysql", "root:Zbj123@tcp(49.233.180.123:3306)/gin-vue?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", "user:password@tcp(ip:port)/dbname?charset=utf8&parseTime=True&loc=Local")
 	defer db.Close()
 	db.LogMode(true) //打印SQL语句
 	file, err := ioutil.ReadFile("recovery.sql")
