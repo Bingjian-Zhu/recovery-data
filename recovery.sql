@@ -1,4 +1,19 @@
-Delete FROM `go_user`;
+DROP TABLE IF EXISTS `go_user`;
+CREATE TABLE `go_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL DEFAULT '' COMMENT '账号',
+  `password` varchar(50) DEFAULT '' COMMENT '密码',
+  `avatar` varchar(255) DEFAULT 'https://zbj-bucket1.oss-cn-shenzhen.aliyuncs.com/avatar.JPG' COMMENT '头像地址',
+  `user_type` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT '状态 1管理员、2为普通用户',
+  `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态 0未进行逻辑删除、1为逻辑删除',
+  `state` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态 0为禁用、1为启用',
+  `created_on` datetime  DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `created_by` varchar(100) DEFAULT '' COMMENT '创建人',
+  `modified_on` datetime  DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `modified_by` varchar(255) DEFAULT '' COMMENT '修改人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 Delete FROM `go_tag`;
 Delete FROM `go_article`;
 Delete FROM `go_role`;
